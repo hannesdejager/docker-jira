@@ -1,15 +1,16 @@
-FROM ubuntu:14.04
+FROM ubuntu:15.04
 MAINTAINER Hannes de Jager <hannes.de.jager@gmail.com>
 
-ENV JIRA_VERSION 6.3.15 
+ENV JIRA_VERSION software-7.1.0-jira-7.1.0 
 
 RUN apt-get -y update && apt-get install -y wget
 
 # Download an run JIRA installer
-RUN wget -q http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-${JIRA_VERSION}-x64.bin
-RUN chmod +x atlassian-jira-${JIRA_VERSION}-x64.bin
-RUN echo -e "\n \n \n \n \n \n" | ./atlassian-jira-${JIRA_VERSION}-x64.bin
-RUN rm atlassian-jira-${JIRA_VERSION}-x64.bin
+
+RUN wget -q http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-${JIRA_VERSION}-x64.bin && \
+    chmod +x atlassian-jira-${JIRA_VERSION}-x64.bin && \
+    printf "o\n2\n\n\n1\nn\ni\n" | ./atlassian-jira-${JIRA_VERSION}-x64.bin && \
+    rm atlassian-jira-${JIRA_VERSION}-x64.bin
 
 # Set volume mount points for installation and home directory. Changes to the
 # home directory needs to be persisted as well as parts of the installation
