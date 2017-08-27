@@ -1,7 +1,7 @@
-FROM ubuntu:16.04
+FROM ubuntu:17.04
 MAINTAINER Hannes de Jager <hannes.de.jager@gmail.com>
 
-ENV JIRA_VERSION software-7.3.3 
+ENV JIRA_VERSION software-7.4.3 
 
 RUN apt-get -y update && apt-get install -y wget
 
