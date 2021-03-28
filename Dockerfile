@@ -1,9 +1,9 @@
-FROM ubuntu:17.04
-MAINTAINER Hannes de Jager <hannes.de.jager@gmail.com>
+FROM ubuntu:20.04
+label MAINTAINER='Hannes de Jager <hannes.de.jager@gmail.com>'
 
-ENV JIRA_VERSION software-7.4.3 
+ENV JIRA_VERSION software-8.13.5 
 
-RUN apt-get -y update && apt-get install -y wget
+RUN apt-get -y update && apt-get install -y wget fontconfig
 
 # Download an run JIRA installer            
 RUN wget -q https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-${JIRA_VERSION}-x64.bin && \
